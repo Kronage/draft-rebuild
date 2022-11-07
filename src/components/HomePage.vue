@@ -1,13 +1,13 @@
 <template>
-  <div class="hello">
+  <div class="center">
     <ul>
-      <menu-item
+      <MenuItem
         v-for="item in menuItems"
         :key="item.id"
         :id="item.id"
         :title="item.title"
         :description="item.description">
-      </menu-item>
+      </MenuItem>
     </ul>
   </div>
 </template>
@@ -57,6 +57,12 @@ export default {
 <style scoped>
 h3 {
   margin: 40px 0 0;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 ul {
   list-style-type: none;
