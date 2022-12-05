@@ -5,6 +5,12 @@
         <li>
           <RouterLink to="/how-to-play">How To Play</RouterLink>
         </li>
+        <li>
+          <RouterLink to="/teams">Teams</RouterLink>
+        </li>
+        <li>
+          <RouterLink to="/users">Users</RouterLink>
+        </li>
       </ul>
     </nav>
   </header>
@@ -47,7 +53,8 @@ a {
 }
 
 a:hover,
-a:active {
+a:active,
+a.active {
   color: #f1a80a;
   border-color: #f1a80a;
   background-color: #1a037e;

@@ -1,14 +1,14 @@
 <template>
-  <div>
+  <base-card>
     <h1>Movie Draft Happy Fun Time</h1>
     <h2>Build a roster of upcoming films and compete for the highest gross earnings</h2>
-  </div>
-  <div>
+  </base-card>
+  <base-card>
     <strong>What is a movie draft?</strong>
     <p>First, full credit to <a href='https://www.nightattack.tv/'>Night Attack/NSFW Show</a>, <a href='https://www.diamondclub.tv/'>Diamond Club</a>, and <a href='https://www.chatrelm.net'>Chat Relm</a>. The idea of a movie draft is not my own; I simply wrote some software to help my coworkers and I conduct our own.</p>
     <p>A movie draft is something like a fantasy sports draft… or so I’m told. Generally, there are two drafts per year: the Summer Block Buster Season and the Winter Oscar Bait Season. A group of friends get together with equal amounts of fake money to buy upcoming movies in an auction. Roughly 30 movies are generally included in the draft, and players bid to purchase them. The goal is to have the highest income from your owned movies using U.S. domestic grosses, ending two weeks after the final movie is released. This implementation is rather U.S.-centric.</p>
-  </div>
-  <div>
+  </base-card>
+  <base-card>
     <strong>General Info</strong>
     <ul>
       <li>There are 2 drafts per year:
@@ -23,8 +23,8 @@
       <li>Each week the (domestic) film grosses are updated using Box Office Mojo.</li>
       <li>The game ends 14 days after the final movie is released.</li>
     </ul>
-  </div>
-  <div>
+  </base-card>
+  <base-card>
     <strong>Rules Per Team</strong>
     <ul>
       <li>Drafting takes 1–2 hours and should occur sometime during the 2 weeks prior to the first film’s release.</li>
@@ -46,7 +46,7 @@
       <li>If multiple groups are playing (each an independent draft), the winners of each group will compete by drafting efficiency (total Adjusted Gross per Draft Buck spent). The group winner who also has the best efficiency will get ultimate bragging rights.</li>
       <li>If a large group (8–12) wants to play, players may pair up.</li>
     </ul>
-  </div>
+  </base-card>
 </template>
 
 <style scoped>
