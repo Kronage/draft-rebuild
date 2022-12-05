@@ -1,18 +1,18 @@
 <template>
-  <TheHeader title="IDX Movie Draft"></TheHeader>
-  <HomePage></HomePage>
+  <TheNavigation></TheNavigation>
+  <main>
+    <RouterView></RouterView>
+  </main>
 </template>
 
 <script>
-import TheHeader from './components/layouts/TheHeader.vue'
-import HomePage from './components/HomePage.vue'
+import TheNavigation from './components/nav/TheNavigation.vue';
 
 export default {
   name: 'App',
   components: {
-    TheHeader,
-    HomePage
-  }
+    TheNavigation,
+  },
 }
 </script>
 
@@ -23,7 +23,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
