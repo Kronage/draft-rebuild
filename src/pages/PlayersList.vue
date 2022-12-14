@@ -2,18 +2,21 @@
   <base-button @click="confirmInput">Confirm</base-button>
   <base-button @click="saveChanges">Save Changes</base-button>
   <ul>
-    <UserItem v-for="user in users" :key="user.id" :name="user.fullName" :role="user.role"></UserItem>
+    <PlayerItem v-for="player in players" :key="player.id" :name="player.fullName" :role="player.role"></PlayerItem>
   </ul>
 </template>
 
 <script>
-import UserItem from '../components/users/UserItem.vue';
+import { mapGetters } from 'vuex';
+import PlayerItem from '../components/players/PlayerItem.vue';
 
 export default {
   components: {
-    UserItem,
+    PlayerItem,
   },
-  inject: ['users'],
+  computed: {
+    ...mapGetters('players', ['players']),
+  },
   data() {
     return { changesSaved: false };
   },

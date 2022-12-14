@@ -3,10 +3,10 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HowToPlay from './pages/HowToPlay.vue';
 import TeamsList from './pages/TeamsList.vue';
 import TeamMembers from './components/teams/TeamMembers.vue';
-import UsersList from './pages/UsersList.vue';
+import PlayersList from './pages/PlayersList.vue';
 import NotFound from './pages/NotFound.vue';
 import TeamsFooter from './components/teams/TeamsFooter.vue';
-import UsersFooter from './components/users/UsersFooter.vue';
+import PlayersFooter from './components/players/PlayersFooter.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -22,10 +22,10 @@ const router = createRouter({
       ]
     },
     {
-      path: '/users',
+      path: '/players',
       components: {
-        default: UsersList,
-        footer: UsersFooter
+        default: PlayersList,
+        footer: PlayersFooter
       },
     },
     { path: '/:notFound(.*)', component: NotFound }

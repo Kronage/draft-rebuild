@@ -1,5 +1,5 @@
 <template>
   <base-card>
-    <h2>Users Footer</h2>
+    <h2>Players Footer</h2>
   </base-card>
 </template>

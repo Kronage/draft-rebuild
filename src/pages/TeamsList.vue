@@ -12,13 +12,16 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import TeamsItem from '../components/teams/TeamsItem.vue';
 
 export default {
   components: {
     TeamsItem,
   },
-  inject: ['teams'],
+  computed: {
+    ...mapGetters('teams', ['teams']),
+  },
 };
 </script>
 

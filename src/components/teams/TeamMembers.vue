@@ -2,25 +2,29 @@
   <section>
     <h2>{{ teamName }}</h2>
     <ul>
-      <UserItem
+      <PlayerItem
         v-for="member in members"
         :key="member.id"
         :name="member.fullName"
         :role="member.role"
-      ></UserItem>
+      ></PlayerItem>
     </ul>
     <RouterLink to="/teams/t2">Go to Team 2</RouterLink>
   </section>
 </template>
 
 <script>
-import UserItem from '../users/UserItem.vue';
+import { mapGetters } from 'vuex';
+import PlayerItem from '../players/PlayerItem.vue';
 
 export default {
-  inject: [ 'users', 'teams' ],
   props: ['teamId'],
   components: {
-    UserItem
+    PlayerItem
+  },
+  computed: {
+    ...mapGetters('players', ['players']),
+    ...mapGetters('teams', ['teams']),
   },
   data() {
     return { 
@@ -34,8 +38,8 @@ export default {
       const members = selectedTeam.members;
       const selectedMembers = [];
       for (const member of members) {
-        const selectedUser = this.users.find(user => user.id === member);
-        selectedMembers.push(selectedUser);
+        const selectedPlayer = this.players.find(player => player.id === member);
+        selectedMembers.push(selectedPlayer);
       }
       this.members = selectedMembers;
       this.teamName = selectedTeam.name;
