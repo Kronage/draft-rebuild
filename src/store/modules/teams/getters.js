@@ -1,5 +1,5 @@
 export default {
   teams(state) {
-    return state.teams;
+    return state.teams
   }
-};
+}

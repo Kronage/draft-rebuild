@@ -6,19 +6,17 @@
   </li>
 </template>
 
-<script>
-export default {
-  props: ["id", "name", "memberCount"],
-  computed: {
-    teamMembersLink() {
-      // return '/teams/' + this.id;
-      return {
-        name: 'team-members',
-        params: { teamId: this.id },
-      };
-    }
-  },
-};
+<script setup>
+import { computed, defineProps } from 'vue'
+
+const props = defineProps(['id', 'name', 'memberCount'])
+
+const teamMembersLink = computed(function() {
+  return {
+    name: 'team-members',
+    params: { teamId: props.id }
+  }
+})
 </script>
 
 <style scoped>

@@ -7,54 +7,47 @@
         :key="member.id"
         :name="member.fullName"
         :role="member.role"
-      ></PlayerItem>
+      />
     </ul>
     <RouterLink to="/teams/t2">Go to Team 2</RouterLink>
   </section>
 </template>
 
-<script>
-import { mapGetters } from 'vuex';
-import PlayerItem from '../players/PlayerItem.vue';
+<script setup>
+import { ref, computed, defineProps, watch } from 'vue'
+import { useStore } from 'vuex'
+import PlayerItem from '../players/PlayerItem.vue'
 
-export default {
-  props: ['teamId'],
-  components: {
-    PlayerItem
-  },
-  computed: {
-    ...mapGetters('players', ['players']),
-    ...mapGetters('teams', ['teams']),
-  },
-  data() {
-    return { 
-      teamName: '',
-      members: [],
-    };
-  },
-  methods: {
-    loadTeamMembers(teamId) {
-      const selectedTeam = this.teams.find(team => team.id === teamId);
-      const members = selectedTeam.members;
-      const selectedMembers = [];
-      for (const member of members) {
-        const selectedPlayer = this.players.find(player => player.id === member);
-        selectedMembers.push(selectedPlayer);
-      }
-      this.members = selectedMembers;
-      this.teamName = selectedTeam.name;
-    },
-  },
-  created() {
-    // this.$route.path  // /teams/t1
-    this.loadTeamMembers(this.teamId);
-  },
-  watch: {
-    teamId(newId) {
-      this.loadTeamMembers(newId);
-    }
+const store = useStore()
+const props = defineProps(['teamId'])
+
+const teamName = ref('')
+const members = ref([])
+
+const players = computed(function() {
+  return store.getters['players/players']
+})
+const teams = computed(function() {
+  return store.getters['teams/teams']
+})
+
+function loadTeamMembers(teamId) {
+  let selectedTeam = teams.value.find(team => team.id === teamId)
+  let mems = selectedTeam.members
+  let selectedMembers = []
+  for (let mem of mems) {
+    let selectedPlayer = players.value.find(player => player.id === mem)
+    selectedMembers.push(selectedPlayer)
   }
-};
+  members.value = selectedMembers
+  teamName.value = selectedTeam.name
+}
+
+loadTeamMembers(props.teamId)
+
+watch(() => props.teamId, function(newId) {
+  loadTeamMembers(newId)
+})
 </script>
 
 <style scoped>

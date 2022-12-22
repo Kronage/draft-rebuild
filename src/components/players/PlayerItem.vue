@@ -5,21 +5,20 @@
   </li>
 </template>
 
-<script>
-export default {
-  props: ['name', 'role'],
-  computed: {
-    roleClass() {
-      if (this.role === 'Engineer') {
-        return 'role--engineer';
-      }
-      if (this.role === 'Consultant') {
-        return 'role--consultant';
-      }
-      return null;
-    },
-  },
-};
+<script setup>
+import { computed, defineProps } from 'vue'
+
+const props = defineProps(['name', 'role'])
+
+const roleClass = computed(function() {
+  if(props.role.value === 'Engineer') {
+    return 'role--engineer'
+  }
+  if (props.role.value === 'Consultant') {
+    return 'role--consultant'
+  }
+  return null
+})
 </script>
 
 <style scoped>

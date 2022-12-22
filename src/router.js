@@ -1,12 +1,12 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router'
 
-import HowToPlay from './pages/HowToPlay.vue';
-import TeamsList from './pages/TeamsList.vue';
-import TeamMembers from './components/teams/TeamMembers.vue';
-import PlayersList from './pages/PlayersList.vue';
-import NotFound from './pages/NotFound.vue';
-import TeamsFooter from './components/teams/TeamsFooter.vue';
-import PlayersFooter from './components/players/PlayersFooter.vue';
+import HowToPlay from './pages/HowToPlay.vue'
+import TeamsList from './pages/TeamsList.vue'
+import TeamMembers from './components/teams/TeamMembers.vue'
+import PlayersList from './pages/PlayersList.vue'
+import NotFound from './pages/NotFound.vue'
+import TeamsFooter from './components/teams/TeamsFooter.vue'
+import PlayersFooter from './components/players/PlayersFooter.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -33,19 +33,19 @@ const router = createRouter({
   linkActiveClass: 'active',
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
-      return savedPosition;
+      return savedPosition
     }
-    return { left: 0, top: 0 };
+    return { left: 0, top: 0 }
   }
-});
+})
 
 router.beforeEach(function(to, from, next) {
   // if (to.name === 'team-members') {
-  //   next();
+  //   next()
   // } else {
-  //   next({ name: 'team-members', params: { teamId: 't2' } });
+  //   next({ name: 'team-members', params: { teamId: 't2' } })
   // }
-  next();
-});
+  next()
+})
 
-export default router;
+export default router

@@ -1,5 +1,5 @@
 export default {
   players(state) {
-    return state.players;
+    return state.players
   }
-};
+}

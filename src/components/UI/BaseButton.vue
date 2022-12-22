@@ -1,13 +1,13 @@
 <template>
-  <button :class="mode">
-    <slot></slot>
+  <button :class="props.mode">
+    <slot />
   </button>
 </template>
   
-<script>
-export default {
-  props: ['mode']
-}
+<script setup>
+import { defineProps } from 'vue'
+
+const props = defineProps(['mode'])
 </script>
   
 <style scoped>

@@ -1,22 +1,15 @@
 <template>
-  <TheHeader></TheHeader>
+  <TheHeader />
   <main>
-    <RouterView></RouterView>
+    <RouterView />
   </main>
   <footer>
-    <RouterView name="footer"></RouterView>
+    <RouterView name="footer" />
   </footer>
 </template>
 
-<script>
-import TheHeader from './components/layouts/TheHeader.vue';
-
-export default {
-  name: 'App',
-  components: {
-    TheHeader,
-  },
-};
+<script setup>
+import TheHeader from './components/layouts/TheHeader'
 </script>
 
 <style>

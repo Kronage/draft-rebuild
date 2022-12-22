@@ -1,5 +1,5 @@
 <template>
-  <RouterView></RouterView>
+  <RouterView />
   <ul>
     <TeamsItem
       v-for="team in teams"
@@ -7,22 +7,20 @@
       :id="team.id"
       :name="team.name"
       :member-count="team.members.length"
-    ></TeamsItem>
+    />
   </ul>
 </template>
 
-<script>
-import { mapGetters } from 'vuex';
-import TeamsItem from '../components/teams/TeamsItem.vue';
+<script setup>
+import { computed } from 'vue'
+import { useStore } from 'vuex'
+import TeamsItem from '../components/teams/TeamsItem'
 
-export default {
-  components: {
-    TeamsItem,
-  },
-  computed: {
-    ...mapGetters('teams', ['teams']),
-  },
-};
+const store = useStore();
+
+const teams = computed(function() {
+  return store.getters['teams/teams']
+})
 </script>
 
 <style scoped>

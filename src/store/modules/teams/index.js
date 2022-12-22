@@ -1,6 +1,6 @@
-import actions from './actions.js';
-import getters from './getters.js';
-import mutations from './mutations.js';
+import actions from './actions.js'
+import getters from './getters.js'
+import mutations from './mutations.js'
 
 export default {
   namespaced: true,
@@ -11,9 +11,9 @@ export default {
         { id: 't2', name: 'The Bookhouse Boys', members: ['u3', 'u4', 'u5'] },
         { id: 't3', name: 'The Owls Are Not What They Seem', members: ['u6', 'u7'] },
       ],
-    };
+    }
   },
   actions,
   getters,
   mutations
-};
+}

@@ -1,6 +1,6 @@
-import actions from './actions.js';
-import getters from './getters.js';
-import mutations from './mutations.js';
+import actions from './actions.js'
+import getters from './getters.js'
+import mutations from './mutations.js'
 
 export default {
   namespaced: true,
@@ -15,9 +15,9 @@ export default {
         { id: 'u6', fullName: 'Janelle', role: 'Magician' },
         { id: 'u7', fullName: 'Tim', role: 'Rogue' },
       ],
-    };
+    }
   },
   actions,
   getters,
   mutations
-};
+}
