@@ -9,7 +9,19 @@
 </template>
 
 <script setup>
+import { provide } from 'vue'
+import { useStore } from 'vuex'
 import TheHeader from './components/layouts/TheHeader'
+
+const store = useStore()
+
+function addPlayer(playerData) {
+  store.dispatch('players/addPlayer', playerData)
+  store.dispatch('players/incrementIdCounter')
+}
+
+provide('addPlayer', addPlayer)
+
 </script>
 
 <style>

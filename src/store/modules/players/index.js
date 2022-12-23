@@ -15,6 +15,7 @@ export default {
         { id: 'u6', fullName: 'Janelle', role: 'Magician' },
         { id: 'u7', fullName: 'Tim', role: 'Rogue' },
       ],
+      idCounter: 8
     }
   },
   actions,

@@ -1,6 +1,5 @@
 <template>
-  <base-button @click="confirmInput">Confirm</base-button>
-  <base-button @click="saveChanges">Save Changes</base-button>
+  <AddPlayer />
   <ul>
     <PlayerItem
       v-for="player in players"
@@ -16,10 +15,12 @@ import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import PlayerItem from '../components/players/PlayerItem'
+import AddPlayer from '../components/players/AddPlayer'
 
 export default {
   components: {
-    PlayerItem
+    PlayerItem,
+    AddPlayer
   },
   setup() {
     const router = useRouter()
