@@ -11,8 +11,7 @@
 </template>
 
 <script>
-import { ref, computed } from 'vue'
-import { useRouter } from 'vue-router'
+import { computed } from 'vue'
 import { useStore } from 'vuex'
 import PlayerItem from '../components/players/PlayerItem'
 import AddPlayer from '../components/players/AddPlayer'
@@ -23,27 +22,14 @@ export default {
     AddPlayer
   },
   setup() {
-    const router = useRouter()
     const store = useStore()
 
-    const changesSaved = ref(false)
-
     const players = computed(function() {
-      return store.getters['players/players'];
+      return store.getters['players/players']
     })
 
-    function confirmInput() {
-      router.push('teams')
-    }
-
-    function saveChanges() {
-      changesSaved.value = true
-    }
-
     return {
-      players,
-      confirmInput,
-      saveChanges
+      players
     }
   },
   beforeRouteLeave(to, from, next) {

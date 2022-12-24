@@ -3,26 +3,34 @@
     <h2>{{ teamName }}</h2>
     <ul>
       <PlayerItem
-        v-for="member in members"
-        :key="member.id"
-        :name="member.fullName"
-        :role="member.role"
+        v-for="teamMember in teamMembers"
+        :key="teamMember.id"
+        :name="teamMember.fullName"
+        :role="teamMember.role"
       />
     </ul>
-    <RouterLink to="/teams/t2">Go to Team 2</RouterLink>
+    <base-button @click="showForm = !showForm">Add Team Member</base-button>
+    <AddTeamMember
+      v-if="showForm"
+      :available-players="availablePlayers"
+      :team-id="props.teamId"
+    />
   </section>
 </template>
 
 <script setup>
-import { ref, computed, defineProps, watch } from 'vue'
+import { ref, computed, defineProps, provide, watch } from 'vue'
 import { useStore } from 'vuex'
-import PlayerItem from '../players/PlayerItem.vue'
+import PlayerItem from '../players/PlayerItem'
+import AddTeamMember from './AddTeamMember'
 
 const store = useStore()
 const props = defineProps(['teamId'])
 
+const showForm = ref(false)
+
 const teamName = ref('')
-const members = ref([])
+const teamMembers = ref([])
 
 const players = computed(function() {
   return store.getters['players/players']
@@ -39,14 +47,29 @@ function loadTeamMembers(teamId) {
     let selectedPlayer = players.value.find(player => player.id === mem)
     selectedMembers.push(selectedPlayer)
   }
-  members.value = selectedMembers
+  teamMembers.value = selectedMembers
   teamName.value = selectedTeam.name
+}
+
+const availablePlayers = ref([])
+
+function loadAvailablePlayers(teamId) {
+  let selectedTeam = teams.value.find(team => team.id === teamId)
+  let mems = selectedTeam.members
+  availablePlayers.value = players.value.filter(plr => !mems.includes(plr.id))
+  console.log(availablePlayers.value)
 }
 
 loadTeamMembers(props.teamId)
 
+loadAvailablePlayers(props.teamId)
+
+provide('loadTeamMembers', loadTeamMembers)
+provide('loadAvailablePlayers', loadAvailablePlayers)
+
 watch(() => props.teamId, function(newId) {
-  loadTeamMembers(newId)
+  loadTeamMembers(newId),
+  loadAvailablePlayers(newId)
 })
 </script>
 

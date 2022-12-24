@@ -51,14 +51,14 @@ function submitForm() {
 }
 
 function validateForm() {
-  formIsValid.value = true;
+  formIsValid.value = true
   if (enteredName.val === '') {
-    enteredName.isValid = false;
-    formIsValid.value = false;
+    enteredName.isValid = false
+    formIsValid.value = false
   }
   if (enteredRole.val === '') {
-    enteredRole.isValid = false;
-    formIsValid.value = false;
+    enteredRole.isValid = false
+    formIsValid.value = false
   }
 }
 
