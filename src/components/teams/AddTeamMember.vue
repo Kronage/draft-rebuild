@@ -33,6 +33,20 @@ const loadTeamMembers = inject('loadTeamMembers')
 const loadAvailablePlayers = inject('loadAvailablePlayers')
 
 function submitForm() {
+  const duplicateTeam = store.getters['teams/duplicatePlayerId'](selected.value)
+  if (duplicateTeam !== undefined) {
+    // make sure they want it to be overwritten
+    if (confirm('This player is already on a team. Are you sure?')) {
+      // delete from team
+      store.dispatch('teams/removeTeamMember', {
+        teamId: duplicateTeam.id,
+        playerId: selected.value
+      })
+    } else {
+      selected.value = ''
+      return
+    }
+  }
   store.dispatch('teams/addTeamMember', {
     teamId: props.teamId,
     playerId: selected.value
