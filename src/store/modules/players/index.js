@@ -10,37 +10,44 @@ export default {
         {
           id: 'u1',
           fullName: 'Nik',
-          role: 'King'
+          role: 'King',
+          movies: ['m1', 'm2']
         },
         {
           id: 'u2',
           fullName: 'Erik',
-          role: 'Pleb'
+          role: 'Pleb',
+          movies: ['m3', 'm4', 'm5']
         },
         {
           id: 'u3',
           fullName: 'Ben',
-          role: 'Grunt'
+          role: 'Grunt',
+          movies: ['m6', 'm8']
         },
         {
           id: 'u4',
           fullName: 'Hillary',
-          role: 'Overseer'
+          role: 'Overseer',
+          movies: ['m7', 'm10']
         },
         {
           id: 'u5',
           fullName: 'Bau',
-          role: '???'
+          role: '???',
+          movies: ['m9']
         },
         {
           id: 'u6',
           fullName: 'Janelle',
-          role: 'Magician'
+          role: 'Magician',
+          movies: ['m11', 'm12', 'm13', 'm14']
         },
         {
           id: 'u7',
           fullName: 'Tim',
-          role: 'Rogue'
+          role: 'Rogue',
+          movies: ['m15', 'm16']
         },
       ],
       idCounter: 8
