@@ -1,7 +1,7 @@
 <template>
   <RouterView />
   <ul>
-    <TeamsItem
+    <TeamItem
       v-for="team in teams"
       :key="team.id"
       :id="team.id"
@@ -14,7 +14,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useStore } from 'vuex'
-import TeamsItem from '../components/teams/TeamsItem'
+import TeamItem from '../components/teams/TeamItem'
 
 const store = useStore()
 

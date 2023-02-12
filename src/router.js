@@ -4,6 +4,7 @@ import HowToPlay from './pages/HowToPlay.vue'
 import TeamsList from './pages/TeamsList.vue'
 import TeamMembers from './components/teams/TeamMembers.vue'
 import PlayersList from './pages/PlayersList.vue'
+import MoviesList from './pages/MoviesList.vue'
 import NotFound from './pages/NotFound.vue'
 import TeamsFooter from './components/teams/TeamsFooter.vue'
 import PlayersFooter from './components/players/PlayersFooter.vue'
@@ -26,6 +27,12 @@ const router = createRouter({
       components: {
         default: PlayersList,
         footer: PlayersFooter
+      },
+    },
+    {
+      path: '/movies',
+      components: {
+        default: MoviesList,
       },
     },
     { path: '/:notFound(.*)', component: NotFound }

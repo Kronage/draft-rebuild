@@ -1,1 +1,5 @@
-export default {}
+export default {
+  movies(state) {
+    return state.movies
+  },
+}

@@ -6,7 +6,7 @@
       :key="player.id"
       :name="player.fullName"
       :role="player.role"
-      />
+    />
   </ul>
 </template>
 

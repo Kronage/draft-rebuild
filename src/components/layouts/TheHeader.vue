@@ -11,6 +11,9 @@
         <li>
           <RouterLink to="/players">Players</RouterLink>
         </li>
+        <li>
+          <RouterLink to="/movies">Movies</RouterLink>
+        </li>
       </ul>
     </nav>
   </header>
