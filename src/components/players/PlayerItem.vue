@@ -2,13 +2,28 @@
   <li>
     <h3>{{ name }}</h3>
     <div class="role" :class="roleClass">{{ role }}</div>
+    <h4>Movies:</h4>
+    <MovieItem
+      v-for="playerMovie in playerMovies"
+      :key="playerMovie.id"
+      :title="playerMovie.title"
+      :box-office="playerMovie.boxOffice"
+      :ratings="playerMovie.ratings"
+    />
   </li>
 </template>
 
 <script setup>
 import { computed, defineProps } from 'vue'
+import { useStore } from 'vuex'
+import MovieItem from '../movies/MovieItem'
 
-const props = defineProps(['name', 'role'])
+const props = defineProps(['name', 'role', 'movies'])
+const store = useStore()
+
+const playerMovies = computed(function() {
+  return store.getters['movies/getMoviesByIds'](props.movies)
+})
 
 const roleClass = computed(function() {
   if(props.role.value === 'Engineer') {

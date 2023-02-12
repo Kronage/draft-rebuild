@@ -7,6 +7,7 @@
         :key="teamMember.id"
         :name="teamMember.fullName"
         :role="teamMember.role"
+        :movies="teamMember.movies"
       />
     </ul>
     <base-button @click="showForm = !showForm">Add Team Member</base-button>
@@ -57,7 +58,6 @@ function loadAvailablePlayers(teamId) {
   let selectedTeam = teams.value.find(team => team.id === teamId)
   let mems = selectedTeam.members
   availablePlayers.value = players.value.filter(plr => !mems.includes(plr.id))
-  console.log(availablePlayers.value)
 }
 
 loadTeamMembers(props.teamId)

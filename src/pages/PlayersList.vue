@@ -6,6 +6,7 @@
       :key="player.id"
       :name="player.fullName"
       :role="player.role"
+      :movies="player.movies"
     />
   </ul>
 </template>
@@ -47,7 +48,7 @@ export default {
 ul {
   list-style: none;
   margin: 2rem auto;
-  max-width: 20rem;
+  max-width: 40rem;
   padding: 0;
 }
 </style>
