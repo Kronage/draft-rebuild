@@ -11,14 +11,12 @@ export default {
     let playerIds = state.teams.find(team => team.id === teamId).members
     let teamMembers = rootGetters['players/getPlayersByIds'](playerIds)
     let teamMovieIds = []
-    let movieIds = []
     for (let teamMember of teamMembers) {
-      movieIds = teamMember.movies
+      let movieIds = teamMember.movies ? teamMember.movies : []
       for (let movieId of movieIds) {
         teamMovieIds.push(movieId)
       }
     }
-    let total = rootGetters['movies/getMovieBoxOfficeTotal'](teamMovieIds)
-    return total
+    return teamMovieIds.length === 0 ? 0 : rootGetters['movies/getMovieBoxOfficeTotal'](teamMovieIds)
   }
 }

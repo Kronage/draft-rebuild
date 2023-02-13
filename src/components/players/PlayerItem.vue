@@ -3,8 +3,16 @@
     <h3>{{ name }}</h3>
       <p>Box Office Total: {{ playerBoxOfficeTotal }}</p>
     <div class="role" :class="roleClass">{{ role }}</div>
-    <base-button class="right" v-if="!showForm" @click="showForm = !showForm">View Movies</base-button>
-    <base-button class="right" v-if="showForm" @click="showForm = !showForm">Hide Movies</base-button>
+    <base-button
+      class="right"
+      v-if="!showForm && props.movies"
+      @click="showForm = !showForm"
+    >View Movies</base-button>
+    <base-button
+      class="right"
+      v-if="showForm && props.movies"
+      @click="showForm = !showForm"
+    >Hide Movies</base-button>
     <div v-if="showForm">
       <h3>Movies:</h3>
       <MovieItem
@@ -29,11 +37,11 @@ const store = useStore()
 const showForm = ref(false)
 
 const playerMovies = computed(function() {
-  return store.getters['movies/getMoviesByIds'](props.movies)
+    return props.movies ? store.getters['movies/getMoviesByIds'](props.movies) : []
 })
 
 const playerBoxOfficeTotal = computed(function() {
-  var boxOffice = store.getters['movies/getMovieBoxOfficeTotal'](props.movies)
+  var boxOffice = props.movies ? store.getters['movies/getMovieBoxOfficeTotal'](props.movies) : 0
   var formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD'
