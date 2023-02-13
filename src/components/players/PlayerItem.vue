@@ -5,12 +5,12 @@
     <div class="role" :class="roleClass">{{ role }}</div>
     <base-button
       class="right"
-      v-if="!showForm && props.movies"
+      v-if="!showForm && props.movies.length > 0"
       @click="showForm = !showForm"
     >View Movies</base-button>
     <base-button
       class="right"
-      v-if="showForm && props.movies"
+      v-if="showForm && props.movies.length > 0"
       @click="showForm = !showForm"
     >Hide Movies</base-button>
     <div v-if="showForm">
@@ -37,11 +37,11 @@ const store = useStore()
 const showForm = ref(false)
 
 const playerMovies = computed(function() {
-    return props.movies ? store.getters['movies/getMoviesByIds'](props.movies) : []
+    return store.getters['movies/getMoviesByIds'](props.movies)
 })
 
 const playerBoxOfficeTotal = computed(function() {
-  var boxOffice = props.movies ? store.getters['movies/getMovieBoxOfficeTotal'](props.movies) : 0
+  var boxOffice = store.getters['movies/getMovieBoxOfficeTotal'](props.movies)
   var formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD'

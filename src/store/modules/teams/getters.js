@@ -12,11 +12,11 @@ export default {
     let teamMembers = rootGetters['players/getPlayersByIds'](playerIds)
     let teamMovieIds = []
     for (let teamMember of teamMembers) {
-      let movieIds = teamMember.movies ? teamMember.movies : []
+      let movieIds = teamMember.movies
       for (let movieId of movieIds) {
         teamMovieIds.push(movieId)
       }
     }
-    return teamMovieIds.length === 0 ? 0 : rootGetters['movies/getMovieBoxOfficeTotal'](teamMovieIds)
+    return rootGetters['movies/getMovieBoxOfficeTotal'](teamMovieIds)
   }
 }

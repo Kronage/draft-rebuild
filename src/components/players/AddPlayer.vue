@@ -4,12 +4,12 @@
     <form @submit.prevent="submitForm">
       <div class="form-control" :class="{invalid: !enteredName.isValid}">
         <label for="fullName">Full Name</label>
-        <input type="text" id="fullName" v-model.trim="enteredName.val" @blur="clearValidity(enteredName)" />
+        <input type="text" maxlength="30" id="fullName" v-model.trim="enteredName.val" @blur="clearValidity(enteredName)" />
         <p v-if="!enteredName.isValid">Full Name must not be empty.</p>
       </div>
       <div class="form-control" :class="{invalid: !enteredRole.isValid}">
         <label for="role">Role</label>
-        <input type="text" id="role" v-model.trim="enteredRole.val" @blur="clearValidity(enteredRole)" />
+        <input type="text" maxlength="30" id="role" v-model.trim="enteredRole.val" @blur="clearValidity(enteredRole)" />
         <p v-if="!enteredRole.isValid">Role must not be empty.</p>
       </div>
       <p v-if="!formIsValid">Please fix the above errors and submit again.</p>
@@ -47,6 +47,7 @@ function submitForm() {
     id: "u"+store.getters['players/idCounter'],
     fullName: enteredName.val,
     role: enteredRole.val,
+    movies: []
   })
 }
 
