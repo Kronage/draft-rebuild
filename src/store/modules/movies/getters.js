@@ -9,5 +9,13 @@ export default {
       selectedMovies.push(selectedMovie)
     }
     return selectedMovies
+  },
+  getMovieBoxOfficeTotal: (state, getters) => (movieIds) => {
+    let playerMovies = getters.getMoviesByIds(movieIds)
+    let total = 0
+    for (let playerMovie of playerMovies) {
+      total += playerMovie.boxOffice
+    }
+    return total
   }
 }

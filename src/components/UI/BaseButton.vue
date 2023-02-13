@@ -12,6 +12,7 @@ const props = defineProps(['mode'])
   
 <style scoped>
 button {
+  border-radius: 40px;
   padding: 0.75rem 1.5rem;
   font-family: inherit;
   background-color: green;

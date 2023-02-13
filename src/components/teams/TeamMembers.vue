@@ -1,6 +1,7 @@
 <template>
   <section>
     <h2>{{ teamName }}</h2>
+    <h3>Box Office Total: {{ teamBoxOfficeTotal }}</h3>
     <ul>
       <PlayerItem
         v-for="teamMember in teamMembers"
@@ -38,6 +39,15 @@ const players = computed(function() {
 })
 const teams = computed(function() {
   return store.getters['teams/teams']
+})
+
+const teamBoxOfficeTotal = computed(function() {
+  var boxOffice = store.getters['teams/getTeamBoxOfficeTotal'](props.teamId)
+  var formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD'
+  })
+  return formatter.format(boxOffice)
 })
 
 function loadTeamMembers(teamId) {
