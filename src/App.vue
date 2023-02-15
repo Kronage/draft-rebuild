@@ -15,11 +15,17 @@ import TheHeader from './components/layouts/TheHeader'
 
 const store = useStore()
 
+function addTeam(teamData) {
+  store.dispatch('teams/addTeam', teamData)
+  store.dispatch('teams/incrementIdCounter')
+}
+
 function addPlayer(playerData) {
   store.dispatch('players/addPlayer', playerData)
   store.dispatch('players/incrementIdCounter')
 }
 
+provide('addTeam', addTeam)
 provide('addPlayer', addPlayer)
 
 </script>

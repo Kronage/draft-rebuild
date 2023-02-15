@@ -1,5 +1,4 @@
 <template>
-  <AddPlayer />
   <ul>
     <PlayerItem
       v-for="player in players"
@@ -9,6 +8,7 @@
       :movies="player.movies"
     />
   </ul>
+  <AddPlayer />
 </template>
 
 <script>

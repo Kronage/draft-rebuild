@@ -9,12 +9,14 @@
       :member-count="team.members.length"
     />
   </ul>
+  <AddTeam />
 </template>
 
 <script setup>
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 import TeamItem from '../components/teams/TeamItem'
+import AddTeam from '../components/teams/AddTeam'
 
 const store = useStore()
 

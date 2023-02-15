@@ -18,7 +18,9 @@ const props = defineProps(['title', 'boxOffice', 'ratings'])
 const boxOffice = computed(function() {
   var formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: 'USD'
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0
   })
   return formatter.format(props.boxOffice)
 })

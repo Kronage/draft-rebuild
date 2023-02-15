@@ -1,19 +1,14 @@
 <template>
   <base-card>
-    <h2>Add a player</h2>
+    <h2>Add a team</h2>
     <form @submit.prevent="submitForm">
       <div class="form-control" :class="{invalid: !enteredName.isValid}">
-        <label for="fullName">Full Name</label>
-        <input type="text" maxlength="30" id="fullName" v-model.trim="enteredName.val" @blur="clearValidity(enteredName)" />
-        <p v-if="!enteredName.isValid">Full Name must not be empty.</p>
-      </div>
-      <div class="form-control" :class="{invalid: !enteredRole.isValid}">
-        <label for="role">Role</label>
-        <input type="text" maxlength="30" id="role" v-model.trim="enteredRole.val" @blur="clearValidity(enteredRole)" />
-        <p v-if="!enteredRole.isValid">Role must not be empty.</p>
+        <label for="teamName">Team Name</label>
+        <input type="text" maxlength="40" id="teamName" v-model.trim="enteredName.val" @blur="clearValidity(enteredName)" />
+        <p v-if="!enteredName.isValid">Team Name must not be empty.</p>
       </div>
       <p v-if="!formIsValid">Please fix the above errors and submit again.</p>
-      <base-button>Add Player</base-button>
+      <base-button>Add Team</base-button>
     </form>
   </base-card>
 </template>
@@ -24,13 +19,9 @@ import { useStore } from 'vuex'
 
 const store = useStore()
 
-const addPlayer = inject('addPlayer')
+const addTeam = inject('addTeam')
 
 const enteredName = reactive({
-  val: '',
-  isValid: true
-})
-const enteredRole = reactive({
   val: '',
   isValid: true
 })
@@ -41,24 +32,18 @@ function submitForm() {
   if (!formIsValid.value) {
     return
   }
-  addPlayer({
-    id: "u"+store.getters['players/idCounter'],
-    fullName: enteredName.val,
-    role: enteredRole.val,
-    movies: []
+  addTeam({
+    id: "t"+store.getters['teams/idCounter'],
+    name: enteredName.val,
+    members: []
   })
   enteredName.val = ''
-  enteredRole.val = ''
 }
 
 function validateForm() {
   formIsValid.value = true
   if (enteredName.val === '') {
     enteredName.isValid = false
-    formIsValid.value = false
-  }
-  if (enteredRole.val === '') {
-    enteredRole.isValid = false
     formIsValid.value = false
   }
 }

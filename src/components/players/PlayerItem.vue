@@ -44,7 +44,9 @@ const playerBoxOfficeTotal = computed(function() {
   var boxOffice = store.getters['movies/getMovieBoxOfficeTotal'](props.movies)
   var formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: 'USD'
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0
   })
   return formatter.format(boxOffice)
 })

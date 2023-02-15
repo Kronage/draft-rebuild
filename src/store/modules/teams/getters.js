@@ -2,6 +2,9 @@ export default {
   teams(state) {
     return state.teams
   },
+  idCounter(state) {
+    return state.idCounter
+  },
   duplicatePlayerId: (state) => (playerId) => {
     return state.teams.find(
       team => team.members.includes(playerId)

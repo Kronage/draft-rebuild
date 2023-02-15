@@ -23,6 +23,7 @@ export default {
           members: ['u6', 'u7']
         },
       ],
+      idCounter: 4
     }
   },
   actions,

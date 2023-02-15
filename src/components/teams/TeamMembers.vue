@@ -45,7 +45,9 @@ const teamBoxOfficeTotal = computed(function() {
   var boxOffice = store.getters['teams/getTeamBoxOfficeTotal'](props.teamId)
   var formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: 'USD'
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0
   })
   return formatter.format(boxOffice)
 })
@@ -60,6 +62,7 @@ function loadTeamMembers(teamId) {
   }
   teamMembers.value = selectedMembers
   teamName.value = selectedTeam.name
+  showForm.value = false
 }
 
 const availablePlayers = ref([])
