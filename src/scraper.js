@@ -29,16 +29,34 @@ function scrape($) {
     movieDataWithDates.push(combined)
   })
 
+  if (movieDataWithDates === []) {
+    throw new Error('No movie data found. Check css selectors in script.')
+  }
+
   return movieDataWithDates
 }
 
 function getDates($) {
   const dates = []
   const calendarSections = $('article[data-testid="calendar-section"]')
+  if (calendarSections.length === 0) {
+    console.log('Failed to scrape Calendar Sections')
+    process.exit(1)
+  }
 
   calendarSections.each((_idx, element) => {
-    var releaseDate = $('div[data-testid="release-date"]', element).text()
-    var count = $('li[data-testid="coming-soon-entry"]', element).length
+    let releaseDate = $('div[data-testid="release-date"]', element).text()
+    if (releaseDate === '') {
+      console.log('Failed to scrape Release Date')
+      return false
+    }
+
+    let count = $('li[data-testid="coming-soon-entry"]', element).length
+    if (count === 0) {
+      console.log('Failed to scrape Coming Soon entries')
+      return false
+    }
+
     for (let i = 0; i < count; i++) {
       let obj = {
         'releaseDate' : releaseDate
@@ -51,13 +69,23 @@ function getDates($) {
 }
 
 function getTitles($) {
-  let movieData = []
-  $('li[data-testid="coming-soon-entry"]').each((_idx, el) => {
-    let movie = $('.ipc-metadata-list-summary-item__t', el)
+  const movieData = []
+  const movieEntries = $('li[data-testid="coming-soon-entry"]')
+  if (movieEntries.length === 0) {
+    console.log('Failed to scrape Coming Soon entries')
+    process.exit(1)
+  }
+
+  movieEntries.each((_idx, element) => {
+    let movie = $('.ipc-metadata-list-summary-item__t', element)
+    if (movie.length === 0) {
+      console.log('Failed to scrape movie summary item')
+      return false
+    }
+    
     let title = movie.text().replace(/\(.*\)/, '').trim()
     let imdbUrl = 'https://www.imdb.com' + movie.attr('href')
-    let posterUrl = $('.ipc-image', el).attr('src')
-
+    let posterUrl = $('.ipc-image', element).attr('src')
     if (posterUrl === undefined) {
       posterUrl = ''
     }
